@@ -1,9 +1,10 @@
 #imports
 import math
 import random
+import BaseClasses as Base
 
 
-class Planet(object):
+class Planet(Base.Body, Base.Orbit):
     Name = "Planet"
 
     Mass = 0

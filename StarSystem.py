@@ -3,51 +3,31 @@ import Star as ST
 import math
 import random
 
-
-class StarSystem(object):
+class StarSystem(ST.Star):
 #####Binary Star Info####
+    #type, 'P' or 'S'
+    Type = None
     #list of stars in the system
-    Stars = []
+    Stars = None
     #number of stars
     Star_Count = 0
-   #Barry Centre
-    CenterOfMass = 0
-    #eccentricity
-    eccent = 0
+    #eccentricity of the stars
+    #seperate from the Base.Orbit because it should be different from the property inherited maybe
+    SystemEccent = 0
     #max seperation
     MaxSep = 0
     #min seperation
     MinSep = 0
 
     #Forbidden Zone
-    ForbidLim = 0
-
-####System Info####
-    #name
-    Name = "Star System"
-    #Luminocity
-    Lum = 0
-    #Mass
-    Mass = 0
-   #surface temp
-    Temp = 0
-
-    #outter orbit limit
-    OuterLim = 0
-    #frost Line
-    FrostLine = 0
-
-####Habitable Zone####
-    #inner limit
-    InnerHabit = 0
-    #outter limit
-    OuterHabbit = 0
-
+    ForbidInnerLim = 0
+    ForbidOutterLim = 0
 
 
     #constructor
     def __init__(self, stars):
         self.Stars = stars
+        #add the berry center distince property to both stars
         
         Star_Count = len(items)
         
