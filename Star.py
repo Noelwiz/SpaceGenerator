@@ -11,8 +11,8 @@ class Star(Base.Body, Base.Orbit):
     Color = "yellow"
     #star type
     Classification = '?'
-    #Birth Date
-    Birth = 0  #years ago
+##    #Birth Date
+##    Birth = 0  #years ago
     #estimated Life
     Life = 0
 
@@ -34,14 +34,17 @@ class Star(Base.Body, Base.Orbit):
     #outter limit
     OuterHabbit = 0
     #is it habitable?
-    Habitable? = False
+    Habitable = False
     
 
 
 
     #constructer
     def __init__ (self, luminocity):
-        self.lum = luminocity
+        if(luminocity < 50):
+            self.Lum = luminocity * Base.U.Lsun
+        else:    
+            self.Lum = luminocity * Base.U.J / Base.U.W
         
         #CalcStuff(self)
         #end init
@@ -69,12 +72,22 @@ class Star(Base.Body, Base.Orbit):
 ##        return
 
     def calc_Lum(self):
+        #ONLY FOR STARS SIMILAR TO SUN, SHOULD MAKE THIS BETTER SOME DAY
         self.Lim = self.Mass ** 4 # * sun luminocity
         return
 
     #treat this like a static? 
     def calc_Lum(self, mass):
+        #ONLY FOR STARS SIMILAR TO SUN, SHOULD MAKE THIS BETTER SOME DAY
         return mass ** 4
+
+    def is_Habitable(self):
+        if ((self.Mass > 0.6 * Base.U.Msun) && (Self.Mass < 1.4 * Base.U.Msun) &&
+                self.InnerLimit < self.OutterHabit):
+            self.Habitable = True
+            return
+        else:
+            self.Habitable = False;
     
 
     
