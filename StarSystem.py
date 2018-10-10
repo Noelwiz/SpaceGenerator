@@ -8,7 +8,7 @@ class StarSystem(ST.Star):
     #type, 'P' or 'S'
     Type = None
     #list of stars in the system
-    Stars = None
+    Stars = None #= (None, None)
     #number of stars
     Star_Count = 0
     #eccentricity of the stars

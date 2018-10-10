@@ -119,12 +119,12 @@ while(teff <= 7201.0):
               '\n')
   teff = teff + 200.0
 
-print '************************************************************'
-print ''
-print 'The HZ coefficients are printed in HZ_coefficients.dat file.'
-print 'HZs for stars with 2600 K <= Teff <=7200 K is in HZs.dat file.'
-print ''
-print '************************************************************'
+print("************************************************************")
+print("")
+print("The HZ coefficients are printed in HZ_coefficients.dat file.")
+print("HZs for stars with 2600 K <= Teff <=7200 K is in HZs.dat file.")
+print('')
+print('************************************************************')
 
 hzdat.close()
 hzcoeff.close()
