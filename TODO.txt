@@ -1,0 +1,10 @@
+BaseClasses
+|-Body 
+||-Body init 
+|||-calc escape velocity
+|||-check if already given units
+||-check if equals works
+|L add a calc escape velocity function
+|-Orbit
+|| Orbit Init
+|| L Check for units already there on given numbers

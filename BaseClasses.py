@@ -3,6 +3,7 @@ import math
 import random
 from astropy import units as U
 
+#TODO, check if these exist in astropy already
 #constants
 LunarMass = 734200000000000000000000 * U.kg
 LunarRad = 1738.1 * 1000 * U.m
@@ -20,11 +21,11 @@ class Body(object):
     #name of the body
     Name = "name"
     #Mass
-    Mass = 0
+    Mass = 0 * U.kg
     #radius
     Rad = 0
     #density
-    Density = 0
+    Density = 0 * U.kg / (U.m ** 3)
     #body orbted
     Orbiting = None
     #orbeted by
@@ -34,9 +35,9 @@ class Body(object):
     #Number of things orbiting this
     NumOrbiting = 0
     #escape velocity
-    EscapeVelocity = 0
+    EscapeVelocity = 0 * U.m / U.second
 
-
+    #TODO: calc escape velocity, check for units on numbers incomging
     def __init__(self, mass, radius, orbiting, orbitedby, name):
         """Initalize a body
         Mass, Radius, The body it orbits, orbiting bodies, name)
@@ -44,6 +45,8 @@ class Body(object):
         """
         self.Name = name
         self.Mass = mass
+        #check if Mass has units of kg yet or not
+        #code
         self.Rad = radius
         #mass / volume of a sphere, assumes perfect sphere
         self.calc_Density()
@@ -54,12 +57,16 @@ class Body(object):
         else:
             self.IsOrbited = True
             self.NumOrbiting = len(self.OrbtedBy)
+        #calc escape velocity
         
 
-##    def __equals__(self, other):
-##        #test if both same type
-##        #test if share name, check if masses are the same as well, or something
-##        return True
+    def __equals__(self, other):
+        #test if both same type
+        if(! (typeof(self) == typeof(other)) ):            
+            #test if share name, check if masses are the same as well, or something
+            return( (self.Name == other.Name) and (self.Mass == other.Mass) #hopefully this checks regardless of units
+        #else
+        return False
 
     def __toStr__(self):
         """Return the name of the body as a string
@@ -88,30 +95,6 @@ class Body(object):
         """Returns the list of names of bodies orbiting as a string"""
         #might not work, or might want to custom make this
         return str(self.OrbitedBy)
-        
-##    def set_Name(self, name):
-##        self.Name = name
-##        return
-##
-##    def set_Mass(self, mass):
-##        self.Mass = mass
-##        return
-##
-##    def set_Rad(self, radius):
-##        self.Rad = radius
-##        return
-##
-##    def set_Orbiting(self, body):
-##        self.Orbiting = body
-##        return
-##
-##    def set_OrbitedBy(self, body):
-##        if(OrbitedBy == None):
-##            self.OrbitedBy = body
-##            return
-##        #don't need to include else
-##        self.OrbitedBy.append(body)
-##        return
 
     def calc_Density(self):
         self.Density = self.Mass/(math.pi*(4/3)*(self.Rad**3))
@@ -132,9 +115,22 @@ class Body(object):
 
 class Orbit(object):
     #Properties
-    SemiMajorAxis = 0
+    SemiMajorAxis = 0 * U.AU
     Eccentrricity = 0
     Pitch = 0 * U.deg
     Yaw = 0 * U.deg
     Roll = 0 * U.deg
     TrueAnomoly = 0 * U.deg
+
+    #TODO check if numbers already have appropriate units
+    def __init__(semimajor, eccentricity, pitch, yaw, roll, trueAnomoly):
+        SemiMajorAxis = semimajor
+        Eccentrricity = eccentricity
+        Pitch = pitch
+        Yaw = yaw
+        Roll = roll
+        TrueAnomoly = trueAnomoly
+
+    #any thing else
+
+
